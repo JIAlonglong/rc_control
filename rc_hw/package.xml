@@ -31,5 +31,10 @@
     <depend>urdf</depend>
     <depend>realtime_tools</depend>
     <depend>serial</depend>
+    <depend>pluginlib</depend>
+    <depend>vesc_driver</depend>
 
+    <export>
+        <hardware_interface plugin="${prefix}/vesc_hw_interface_plugin.xml"/>
+    </export>
 </package>

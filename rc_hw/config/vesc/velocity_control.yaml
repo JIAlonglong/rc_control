@@ -1,0 +1,9 @@
+rc_hw:
+  vesc:
+    joint_name: vesc_joint
+    command_mode: velocity
+    joint_type: continuous
+    port: /dev/ttyACM0
+    num_rotor_poles: 20
+    gear_ratio: 18/78
+    torque_const: 1

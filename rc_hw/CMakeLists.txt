@@ -3,6 +3,7 @@ project(rc_hw)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
+add_compile_options(-std=c++17)
 set(CMAKE_BUILD_TYPE "Debug")
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED
@@ -20,6 +21,8 @@ find_package(catkin REQUIRED
         urdf
         realtime_tools
         serial
+        pluginlib
+        vesc_driver
         )
 
 ## Find system libraries
@@ -53,6 +56,8 @@ catkin_package(
         urdf
         realtime_tools
         serial
+        pluginlib
+        vesc_driver
         DEPENDS
 )
 
@@ -78,10 +83,21 @@ add_executable(${PROJECT_NAME}
         src/control_loop.cpp
         src/hardware_interface/DT35_laser.cpp)
 
+add_executable(vesc
+        src/hardware_interface/vesc/vesc_hw_interface.cpp
+        src/hardware_interface/vesc/vesc_hw_interface_node.cpp
+        src/hardware_interface/vesc/vesc_servo_controller.cpp
+        src/hardware_interface/vesc/vesc_step_difference.cpp
+        src/hardware_interface/vesc/vesc_wheel_controller.cpp)
 ## Specify libraries to link executable targets against
 target_link_libraries(${PROJECT_NAME}
         ${catkin_LIBRARIES}
         )
+
+target_link_libraries(vesc
+        ${Boost_INCLUDE_DIRS}
+        ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##

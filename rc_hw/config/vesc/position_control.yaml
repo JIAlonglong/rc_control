@@ -1,0 +1,27 @@
+rc_hw:
+  vesc:
+    joint_name: vesc_joint
+    command_mode: position
+    port: /dev/ttyACM0
+    num_rotor_poles: 20
+    gear_ratio: 0.230769
+    torque_const: 1
+    servo:
+      calibration_current: 1.0
+      calibration_duty: 0.01
+      calibration_position: 0.0
+      calibration_mode: duty
+      Kp: 0.1
+      Ki: 0.01
+      Kd: 0.02
+      i_clamp: 1.0
+      duty_limiter: 1.0
+      antiwindup: true
+      control_rate: 100
+      enable_smooth_diff: true
+      smooth_diff:
+        max_sample_sec: 0.2
+        max_smooth_step: 10
+      endstop_window: 1
+      endstop_threshold: 0.8
+      endstop_margin: 0.02
